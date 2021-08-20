@@ -1,0 +1,9 @@
+@import "../../styles/variables.scss";
+
+.SignUp {
+  .TextField {
+    @media (min-width: $breakpoint-medium) {
+      margin-top: 0 !important;
+    }
+  }
+}
