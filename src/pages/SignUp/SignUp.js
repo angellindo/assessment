@@ -13,7 +13,7 @@ import "./SignUp.scss";
 function SignUp() {
   const methods = useForm({
     criteriaMode: "all",
-    defaultValues: { advances: false, other: false, alerts: false },
+    defaultValues: { userOptions: [] },
   });
   const { notification } = useNotification();
   const {
@@ -23,9 +23,11 @@ function SignUp() {
     reset,
   } = methods;
 
-  const onSubmit = async (data) => {
-    console.log(data);
-    const response = await new User(data).create();
+  const onSubmit = async (payload) => {
+    const { userOptions, ...cleanedPayload } = payload;
+    userOptions.forEach((option) => (cleanedPayload[option] = true));
+
+    const response = await new User(cleanedPayload).create();
     notification(response);
   };
 
@@ -45,6 +47,10 @@ function SignUp() {
         })}
       </ul>
     );
+  };
+
+  const validateForSingleCheckBox = (options) => {
+    return options.length > 0 || "Select at least one checkbox";
   };
 
   return (
@@ -99,11 +105,26 @@ function SignUp() {
           </div>
           <div className="uk-flex uk-margin-top checkboxes">
             <div className="uk-width-1-1 uk-flex uk-flex-column">
-              <Checkbox label="Advances" name="advances" />
-              <Checkbox label="Other Communications" name="other" />
+              <Checkbox
+                label="Advances"
+                name="userOptions"
+                value="advances"
+                rules={{ validate: validateForSingleCheckBox }}
+              />
+              <Checkbox
+                label="Other Communications"
+                name="userOptions"
+                value="other"
+                rules={{ validate: validateForSingleCheckBox }}
+              />
             </div>
             <div className="uk-width-1-1 uk-margin-small-left">
-              <Checkbox label="Alerts" name="alerts" />
+              <Checkbox
+                label="Alerts"
+                name="userOptions"
+                value="alerts"
+                rules={{ validate: validateForSingleCheckBox }}
+              />
             </div>
           </div>
           <div className="form-actions uk-margin-large-top">

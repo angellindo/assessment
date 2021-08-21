@@ -16,10 +16,10 @@ const TextField = ({ label, name, rules = {}, className, ...props }) => {
       </label>
       <div className="uk-form-controls">
         <input
+          id={name}
           {...register(name, rules)}
           className={`uk-input  ${errorClass}`}
           type="text"
-          placeholder="Some text..."
           {...props}
         />
       </div>

@@ -14,26 +14,32 @@
     "web-vitals": "^1.1.2"
   },
   "devDependencies": {
-    "source-map-explorer": "^2.5.2",
-    "prettier": "^2.3.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
-    "node-sass": "^6.0.1",
+    "concurrently": "^6.2.1",
+    "eslint": "^7.32.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
     "husky": "^7.0.1",
-    "lint-staged": "^11.1.2"
+    "lint-staged": "^11.1.2",
+    "node-sass": "^6.0.1",
+    "prettier": "^2.3.2"
   },
   "scripts": {
     "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "start": "react-scripts start",
+    "start": "concurrently \"npm run dev\" \"npm run server\"",
+    "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "server": "cd api && node server.js",
+    "postinstall": "cd api && npm install"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "plugin:jsx-a11y/recommended"
     ]
   },
   "browserslist": {
@@ -57,5 +63,6 @@
     "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
       "prettier --write"
     ]
-  }
+  },
+  "proxy": "http://localhost:3001"
 }
