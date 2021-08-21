@@ -1,4 +1,109 @@
+.uk-button,
+.uk-checkbox,
+.uk-input,
+.uk-select {
+  box-shadow: 0 3px 4px #999;
+}
+
 .uk-notification {
   width: auto;
   min-width: 350px;
+}
+
+.uk-button {
+  border-radius: 20px;
+  min-width: 140px;
+
+  &.uk-button-default {
+    background-color: #fff;
+  }
+}
+
+.uk-checkbox {
+  height: 25px;
+  width: 25px;
+  background-color: #fff;
+  border: 3px solid $inputs-blured-color;
+
+  & + span {
+    text-transform: uppercase;
+  }
+
+  &.checked {
+    background-color: $global-primary-background;
+    border-color: $global-primary-background;
+    box-shadow: none;
+    color: #fff;
+  }
+
+  svg {
+    padding: 3px;
+    vertical-align: unset;
+  }
+
+  &:checked {
+    background-image: none;
+  }
+}
+
+.uk-form-label {
+  text-transform: uppercase;
+}
+
+.uk-form-controls,
+.form-control {
+  margin-top: 5px;
+}
+
+.uk-input {
+  border-color: $inputs-blured-color;
+  border-width: 3px;
+
+  &:focus {
+    border-color: $inputs-focused-color;
+  }
+
+  &.uk-form-danger {
+    background-color: $form-danger-background;
+  }
+}
+
+.uk-select {
+  border-color: $inputs-blured-color;
+  border-width: 3px;
+
+  & + .select-arrow {
+    display: inline-block;
+    height: 34px;
+    width: 20px;
+
+    svg {
+      width: 10px;
+      margin: 8px 0;
+      transition: transform 0.2s ease-out;
+    }
+  }
+
+  &:focus {
+    border-color: $inputs-focused-color;
+
+    & + .select-arrow > svg {
+      transform: rotate(90deg);
+    }
+  }
+
+  &.uk-form-danger {
+    background-color: $form-danger-background;
+  }
+}
+
+.uk-select:not([multiple]):not([size]) {
+  background-image: none;
+  background-size: 0.65em auto, 100%;
+  background-position: right 0.7em top 50%, 0 0;
+}
+
+.uk-form-danger,
+.uk-form-danger:focus {
+  border-color: $form-danger-border;
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import { useFormContext } from "react-hook-form";
+import { ReactComponent as ExpandArrow } from "../images/expand-arrow.svg";
 
 function Select({ label, name, rules = {}, className, placeholder, ...props }) {
   const {
@@ -14,7 +15,7 @@ function Select({ label, name, rules = {}, className, placeholder, ...props }) {
       <label className="uk-form-label" htmlFor="euResident">
         {label}
       </label>
-      <div className="form-control">
+      <div className="form-control uk-position-relative">
         <select
           {...register(name, rules)}
           id={name}
@@ -26,6 +27,9 @@ function Select({ label, name, rules = {}, className, placeholder, ...props }) {
           <option value="yes">Yes</option>
           <option value="no">No</option>
         </select>
+        <span className="select-arrow uk-position-absolute uk-position-center-right">
+          <ExpandArrow />
+        </span>
       </div>
     </div>
   );

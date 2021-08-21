@@ -2,8 +2,35 @@
 
 .SignUp {
   .TextField {
-    @media (min-width: $breakpoint-medium) {
-      margin-top: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  button[type="submit"] {
+    margin-right: $global-small-gutter;
+  }
+
+  @media (max-width: $breakpoint-medium) {
+    .uk-flex.fields {
+      flex-direction: column;
+    }
+
+    .uk-flex.checkboxes {
+      flex-direction: column;
+
+      & > div {
+        margin-left: 0 !important;
+      }
+    }
+
+    .TextField {
+      margin-left: 0 !important;
+    }
+  }
+
+  @media (max-width: $breakpoint-small) {
+    button[type="submit"] {
+      margin-bottom: $global-small-gutter;
+      margin-right: 0;
     }
   }
 }

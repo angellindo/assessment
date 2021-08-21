@@ -3,13 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "husky": "^7.0.1",
-    "lint-staged": "^11.1.2",
-    "node-sass": "^6.0.1",
-    "prettier": "^2.3.2",
+    "classnames": "^2.3.1",
+    "email-validator": "^2.0.4",
+    "lodash": "^4.17.21",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.12.2",
@@ -17,7 +13,18 @@
     "uikit": "^3.7.2",
     "web-vitals": "^1.1.2"
   },
+  "devDependencies": {
+    "source-map-explorer": "^2.5.2",
+    "prettier": "^2.3.2",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
+    "node-sass": "^6.0.1",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.1.2"
+  },
   "scripts": {
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
