@@ -11,7 +11,6 @@ class User {
       });
       return await response.json();
     } catch (error) {
-      console.log(error.json());
       return error.json();
     }
   }

@@ -1,13 +1,14 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const port = 3001;
 
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
-app.post("/api/users", function (req, res) {
+app.post("/api/users", cors(), function (req, res) {
   if (req.body.firstName === "error") {
-    res.status(400).jsonp({
+    res.status(400).json({
       status: "error",
       message: "Invalid Subscription request.",
     });
